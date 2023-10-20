@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+
+    <div class="container my-5 text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-sm-10">
+                <div class="card">
+                    <div class="card-header">
+                        <a class="text-center">
+                            <img src="stepup.png" alt="Logo" class="logo">
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST">
+                            <div class="form-group">
+                                <label for="username">Username:</label>
+                                <input type="text" class="form-control" id="username" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="text" class="form-control" id="email" name="email"
+                                    oninput="this.value= this.value.replace(/\s/g, '')" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input type="password" class="form-control" id="password" name="password"
+                                    oninput="this.value= this.value.replace(/\s/g, '')" required
+                                    pattern="^(?=.*[!@#$%^&*])\S{8,12}$"
+                                    title="Password must be 8-12 characters long and contain at least one special character (!@#$%^&*)">
+                            </div>
+                            <div class="form-group">
+                                <label for="mobile">Mobile Number:</label>
+                                <input type="text" class="form-control" id="mobile" name="mobile" maxlength="11"
+                                    oninput="this.value=this.value.replace(/[^0-9]/g, '')" required pattern="[0-9]{11}"
+                                    title="Mobile should have 11 numbers">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block"><a href="login.html"
+                                    style="color: white;">register</a></button>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <p class="text-center">Already have an account?</p>
+                        <p class="text-center"> <a href="login.html">Login here.</a>
+                        <p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .logo {
+            width: 30vh;
+            height: 20vh;
+            margin-right: 10px;
+            margin-bottom: -30px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: darkviolet;
+            background-size: cover;
+            height: auto;
+            width: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+
+        .card {
+            box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.8);
+            border-radius: 20px;
+        }
+
+
+        .form-control {
+            padding: 12px;
+            width: 93%;
+            margin: 15px;
+            border: 1px solid black;
+            outline: none;
+            border-radius: 20px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            width: 40%;
+            margin: 40px auto 0;
+            display: block;
+            background-color: blue;
+            color: white;
+            font-weight: bold;
+            border: none;
+            outline: none;
+            border-radius: 20px;
+        }
+    </style>
+
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

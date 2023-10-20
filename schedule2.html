@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calendar</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .calendar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        .day {
+            border: 1px solid white;
+            padding: 60px;
+            position: relative;
+            cursor: pointer;
+            background-color: black;
+            text-align: center;
+        }
+        .day-label {
+            font-size: 14px;
+        }
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin: 20px;
+        }
+        .navigation-button {
+            font-size: 32px;
+            cursor: pointer;
+        }
+        /* Make the buttons larger */
+        .navigation-button {
+            font-size: 48px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Calendar</h1>
+
+    <div class="calendar-container">
+        <div class="month-year" id="monthYear">
+        </div>
+        <div class="navigation-buttons">
+            <span class="navigation-button" id="previousButton" onclick="moveCalendar(-7)">&larr;</span>
+            <span class="navigation-button" id="nextButton" onclick="moveCalendar(7)">&rarr;</span>
+        </div>
+        <div class="calendar" id="calendar">
+        </div>
+    </div>
+
+    <script>
+        let currentDate = new Date();
+        const calendar = document.getElementById('calendar');
+        const monthYear = document.getElementById('monthYear');
+
+        function createCalendar(date) {
+            calendar.innerHTML = '';
+            monthYear.textContent = date.toLocaleDateString('default', { year: 'numeric', month: 'long' });
+
+            for (let i = 0; i < 7; i++) {
+                const day = document.createElement('div');
+                day.classList.add('day');
+                day.textContent = date.getDate();
+                day.dataset.date = date.toISOString().split('T')[0];
+
+                const dayLabel = document.createElement('div');
+                dayLabel.classList.add('day-label');
+                dayLabel.textContent = getDayOfWeek(date);
+
+                day.appendChild(dayLabel);
+                calendar.appendChild(day);
+
+                date.setDate(date.getDate() + 1);
+            }
+        }
+
+        function getDayOfWeek(date) {
+            const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            return daysOfWeek[date.getDay()];
+        }
+
+        function moveCalendar(daysToMove) {
+            currentDate.setDate(currentDate.getDate() + daysToMove);
+            createCalendar(new Date(currentDate));
+        }
+
+        createCalendar(currentDate);
+    </script>
+</body>
+</html>

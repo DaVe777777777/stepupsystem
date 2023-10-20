@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar with Editable Notes and Colors</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .calendar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        .day {
+            border: 1px solid white;
+            padding: 60px;
+            position: relative;
+            cursor: pointer;
+            background-color: black;
+            text-align: center;
+        }
+        .day-label {
+            font-size: 14px;
+        }
+        .note-container {
+            margin: 5px 0;
+            padding: 5px;
+            border: 1px solid black;
+            cursor: pointer;
+            position: relative;
+        }
+        .note-content {
+            font-size: 14px;
+            white-space: pre-line;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .add-note {
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .delete-note {
+            cursor: pointer;
+            font-size: 18px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        .note-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        .note-color {
+            font-size: 14px;
+        }
+        .note-color-input {
+            width: 100px;
+        }
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin: 20px;
+        }
+        .navigation-button {
+            font-size: 32px;
+            cursor: pointer;
+        }
+        .month-year {
+            text-align: center;
+            font-size: 24px;
+        }
+
+        /* Add the following CSS rule for the note container lines */
+        .note-container::before {
+            content: '';
+            display: block;
+            border-top: 1px solid white;
+            margin: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calendar with Editable Notes and Colors</h1>
+
+    <div class="calendar-container">
+        <div class="month-year" id="monthYear">
+        </div>
+        <div class="navigation-buttons">
+            <span class="navigation-button" id="previousButton" onclick="moveCalendar(-7)">&larr;</span>
+            <span class="navigation-button" id="nextButton" onclick="moveCalendar(7)">&rarr;</span>
+        </div>
+        <div class="calendar" id="calendar">
+        </div>
+    </div>
+
+    <script>
+        const notes = {};
+        let currentDate = new Date();
+        const calendar = document.getElementById('calendar');
+        const monthYear = document.getElementById('monthYear');
+
+        function createCalendar(date) {
+            calendar.innerHTML = '';
+            monthYear.textContent = date.toLocaleDateString('default', { year: 'numeric', month: 'long' });
+
+            for (let i = 0; i < 7; i++) {
+                const day = document.createElement('div');
+                day.classList.add('day');
+                day.textContent = date.getDate();
+                day.dataset.date = date.toISOString().split('T')[0];
+                day.addEventListener('click', function () {
+                    toggleNoteContainer(day);
+                });
+
+                const dayLabel = document.createElement('div');
+                dayLabel.classList.add('day-label');
+                dayLabel.textContent = getDayOfWeek(date);
+
+                const notesContainer = document.createElement('div');
+                notesContainer.classList.add('note-container');
+
+                day.appendChild(dayLabel);
+                day.appendChild(notesContainer);
+
+                calendar.appendChild(day);
+
+                date.setDate(date.getDate() + 1);
+            }
+        }
+
+        function getDayOfWeek(date) {
+            const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            return daysOfWeek[date.getDay()];
+        }
+
+        function toggleNoteContainer(day) {
+            const date = day.dataset.date;
+
+            if (!notes[date]) {
+                const noteContainer = document.createElement('div');
+                noteContainer.classList.add('note-container');
+                const addNoteButton = document.createElement('span');
+                addNoteButton.classList.add('add-note');
+                addNoteButton.textContent = '+';
+                addNoteButton.addEventListener('click', function (event) {
+                    event.stopPropagation();
+                    addNote(date, noteContainer);
+                });
+                noteContainer.appendChild(addNoteButton);
+                day.querySelector('.note-container').remove();
+                day.appendChild(noteContainer);
+            }
+        }
+
+        function addNote(date, container) {
+            const existingNotes = notes[date] || [];
+            const noteText = prompt(`Add a note for ${date}`, existingNotes[0] ? existingNotes[0].textContent : '');
+
+            if (noteText !== null) {
+                const noteElement = document.createElement('div');
+                noteElement.classList.add('note-container');
+
+                const noteContent = document.createElement('div');
+                noteContent.classList.add('note-content');
+                noteContent.textContent = noteText;
+
+                const noteActions = document.createElement('div');
+                noteActions.classList.add('note-actions');
+
+                const colorInput = document.createElement('input');
+                colorInput.classList.add('note-color-input');
+                colorInput.placeholder = 'Color';
+                colorInput.addEventListener('change', function () {
+                    noteElement.style.backgroundColor = colorInput.value;
+                });
+
+                const editNoteButton = document.createElement('span');
+                editNoteButton.classList.add('add-note');
+                editNoteButton.textContent = '✏️';
+                editNoteButton.addEventListener('click', function () {
+                    editNoteText(noteContent);
+                });
+
+                const deleteNoteButton = document.createElement('span');
+                deleteNoteButton.classList.add('delete-note');
+                deleteNoteButton.textContent = '❌';
+                deleteNoteButton.addEventListener('click', function () {
+                    deleteNoteContainer(date, container);
+                });
+
+                noteActions.appendChild(colorInput);
+                noteActions.appendChild(deleteNoteButton);
+                noteActions.appendChild(editNoteButton);
+
+                noteElement.appendChild(noteActions);
+                noteElement.appendChild(noteContent);
+
+                container.appendChild(noteElement);
+
+                if (!notes[date]) {
+                    notes[date] = [];
+                }
+                notes[date].push(noteElement);
+            }
+        }
+
+        function editNoteText(noteContent) {
+            const newText = prompt('Edit the note text:', noteContent.textContent);
+            if (newText !== null) {
+                noteContent.textContent = newText;
+            }
+        }
+
+        function deleteNoteContainer(date, container) {
+            if (confirm('Delete this note?')) {
+                container.innerHTML = '';
+                delete notes[date];
+            }
+        }
+
+        function moveCalendar(daysToMove) {
+            currentDate.setDate(currentDate.getDate() + daysToMove);
+            createCalendar(new Date(currentDate));
+        }
+
+        createCalendar(currentDate);
+    </script>
+</body>
+</html>

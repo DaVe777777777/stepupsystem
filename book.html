@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BOOKING</title>
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+        integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous" />
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      />
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="animate__animated animate__fadeIn">
+
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="stepup.png" /></a>
+            <div class="nav-links" id="navLinks">
+                <i class="bi bi-x-lg" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="instructor.html">INSTRUCTOR</a></li>
+                    <li class="dropdown"> 
+                        <a href="#">CLASSES</a> 
+                        <ul class="dropdown-menu"> 
+                            <li><a href="class.html">CLASS</a></li>
+                            <li><a href="ticket.html">TICKETS</a></li>
+                            <li><a href="book.html">BOOKING</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"> 
+                        <a href="#">INFOS</a> 
+                        <ul class="dropdown-menu"> 
+                            <li><a href="about_us.html">ABOUT US</a></li>
+                            <li><a href="contact.html">CONTACT US</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="profile.html">PROFILE</a></li>
+                    <li><a href="login.html" class="logout-button">LOGOUT</a></li>
+                </ul>
+
+            </div>
+            <i class="bi bi-list" onclick="showMenu()"></i>
+        </nav>
+    </section>
+
+    
+
+<section class="booking">
+    <h1>BOOKING</h1>
+    <div class="form-container">
+        <form>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Email Address</label>
+            <br>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Type Of Class</label>
+            <br>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>Type of class</option>
+              <option>Learner</option>
+              <option>Master</option>
+              <option>Step By Step Up</option>
+            </select>
+          </div>
+         
+          <div class="form-group">
+            <label for="exampleFormControlDate">Date</label>
+            <br>
+            <input type="date" class="form-control" id="exampleFormControlDate">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTime">Time</label>
+            <br>
+            <input type="time" class="form-control" id="exampleFormControlTime">
+          </div>
+          <button type="button" class="btn btn-primary" id="submitButton"><a href="profile.html">Submit</a></button>
+          <button type="button" class="btn btn-secondary" id="cancelButton"><a href="book.html">Cancel</a></button>
+        </form>
+      </div>
+</section>
+
+    <section>
+        <div class="facocon">
+            <div class="facorow">
+                <div class="facofa" onclick="window.location.href = 'faq.html';">
+                    <a href="faq.html">FAQ</a>
+                </div>
+                <div class="facoco" onclick="window.location.href = 'contact.html';">
+                    <a href="contact.html">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="footer">
+            <div class="menu">
+                <h2>Classes</h2>
+                <ul>
+                    <li><a href="instructor.html">Instructor</a></li>
+                    <li><a href="class.html">Class</a></li>
+                    <li><a href="ticket.html">Tickets</a></li>
+                    <li><a href="book.html">Booking</a></li>
+                </ul>
+            </div>
+            <div class="menu">
+                <h2>Infos</h2>
+                <ul>
+                    <li><a href="about_us.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-body">
+                <!-- <img src="stepup.png" alt="Logo" width="200"> -->
+                <h1>STEP UP</h1>
+                <br>
+                <h2>DANCE STUDIO</h2>
+                <h2>BATANGAS</h2>
+                <h2>+639123456789</h2>
+                <h2>STUDIO@STEPUP.COM</h2>
+            </div>
+    </section>
+
+    <section>
+        <div class="footer-bottom">
+            <h3> &copy; 2023 STEP UP. All Rights Reserved.</h3>
+        </div>
+        </div>
+    </section>
+
+
+    <style>
+    .booking h1{
+        text-align: center;
+        font-weight: bolder;
+        font-size: 28vh;
+    }
+
+    .form-container {
+      max-width: 80vh;
+      height: 70vh;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      font-size: 30px;
+    }
+
+    .form-control {
+      width: 95%;
+      padding: 9px;
+      border: 2px solid black;
+      border-radius: 3px;
+      font-size: 16px;
+    }
+
+    select.form-control {
+      height: 40px;
+    }
+
+    .btn-primary {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .btn-primary a {
+        color: #fff;
+        font-weight: bolder;
+    }
+
+    .btn-secondary {
+      background-color: red;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .btn-secondary a{
+        color: #fff;
+        font-weight: bolder;
+        
+    }
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Roboto", sans-serif;
+        }
+
+
+        .header {
+        width: 100%;
+        background-color: darkviolet;
+        background-size: cover;
+        height: 18vh;
+    }
+
+    nav {
+        display: flex;
+        padding: 0% 7%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav img {
+        width: 28vh;
+    }
+
+    .nav-links {
+        flex: 1;
+        text-align: center;
+
+    }
+
+    .nav-links ul li {
+        list-style: none;
+        display: inline-block;
+        padding: 0 50px;
+        position: relative;
+    }
+
+    .nav-links ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: bolder;
+    }
+
+    .nav-links ul li a::after {
+        content: "";
+        width: 0%;
+        height: 2px;
+        background: lightblue;
+        display: block;
+        margin: auto;
+        transition: 0.5s;
+    }
+
+    .nav-links ul li a:hover::after {
+        width: 100%;
+    }
+
+    .logout-button {
+        display: inline-block;
+        padding: 8px 16px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        background-color: #c0392b;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    .logout-button:hover {
+        background-color: #e74c3c;
+    }
+
+    nav .bi {
+        display: none;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        background-color: darkviolet;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        text-align: left;
+        top: 100%;
+        left: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu li {
+        margin: 3px;
+        margin-left: 3px;
+    }
+
+
+
+        .facocon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .facorow {
+            display: flex;
+            width: 100%;
+
+        }
+
+        .facoco {
+            flex: 1;
+            height: 35vh;
+            background-color: darkviolet;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            color: white;
+            font-size: 18px;
+            border-top: 2px solid white;
+        }
+
+        .facofa {
+            flex: 1;
+            height: 35vh;
+            background-color: darkviolet;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            color: white;
+            font-size: 18px;
+            border-right: 2px solid white;
+            border-top: 2px solid white;
+
+        }
+
+        .facofa a {
+            text-decoration: none;
+            color: inherit;
+            font-size: 8vh;
+            font-weight: bolder
+        }
+
+        .facoco a {
+            text-decoration: none;
+            color: inherit;
+            font-size: 8vh;
+            font-weight: bolder
+        }
+
+        .footer {
+            color: black;
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer .menu {
+            text-align: left;
+            flex-direction: column;
+            align-items: flex-start;
+            display: flex;
+            margin-right: 100px;
+            padding-left: 50px;
+            padding-top: 30px;
+        }
+
+        .footer .menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer .menu ul li {
+            margin: 5px 0;
+            font-size: 23px;
+        }
+
+        .footer .menu a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .footer .menu h2 {
+            margin: 5px 0;
+            color: gray;
+        }
+
+        .footer-body {
+            padding-top: 10px;
+            padding-bottom: 10vh;
+            text-align: center;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .footer-body h2 {
+            font-size: 45px;
+        }
+
+        .footer-body h1 {
+            font-size: 20vh;
+        }
+
+        .footer-body img {
+            width: 40vh;
+        }
+
+        .footer-bottom h3 {
+            border-top: 2px solid black;
+            color: black;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+
+            .header {
+            height: 20vh;
+        }
+
+        .nav-links ul li {
+            display: block;
+            padding: 20px 12px;
+        }
+
+        .nav-links {
+            position: absolute;
+            background: darkviolet;
+            height: 100vh;
+            width: 200px;
+            top: 0;
+            right: -200px;
+            text-align: left;
+            z-index: 2;
+            transition: 1s;
+            padding-top: 20px;
+            border-left: 2px solid black;
+            border-bottom: 2px solid black;
+        }
+
+        .nav-links ul {
+            padding: 30px;
+        }
+
+
+        .dropdown-menu {
+            margin-left: 12px;
+            margin-top: -20px;
+
+        }
+
+
+
+        .dropdown-menu li {
+            margin: -25px;
+
+        }
+
+        nav .bi {
+            display: block;
+            color: white;
+            margin: 10px;
+            font-size: 22px;
+            cursor: pointer;
+        }
+        }
+    </style>
+
+    <script>
+        var navLinks = document.getElementById("navLinks");
+
+        function showMenu() {
+            navLinks.style.right = "0";
+        }
+        function hideMenu() {
+            navLinks.style.right = "-200px";
+        }
+    </script>
+
+</body>
+
+</html>
