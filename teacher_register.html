@@ -29,34 +29,39 @@
                         <form action="" method="POST">
                             <div class="form-group">
                                 <label for="username">Username:</label>
-                                <input type="text" class="form-control" id="username" name="username" required>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Name" required>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email:</label>
-                                <input type="text" class="form-control" id="email" name="email"
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Name@email.com"
                                     oninput="this.value= this.value.replace(/\s/g, '')" required>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password:</label>
-                                <input type="password" class="form-control" id="password" name="password"
+                                <input type="password" class="form-control" id="password" name="password" placeholder="8-12 characters"
                                     oninput="this.value= this.value.replace(/\s/g, '')" required
                                     pattern="^(?=.*[!@#$%^&*])\S{8,12}$"
                                     title="Password must be 8-12 characters long and contain at least one special character (!@#$%^&*)">
                             </div>
                             <div class="form-group">
-                                <label for="mobile">Mobile Number:</label>
-                                <input type="text" class="form-control" id="mobile" name="mobile" maxlength="11"
+                                <label for="number">Mobile Number:</label>
+                                <input type="text" class="form-control" id="mobile" name="mobile" maxlength="11" placeholder="Mobile Number"
                                     oninput="this.value=this.value.replace(/[^0-9]/g, '')" required pattern="[0-9]{11}"
                                     title="Mobile should have 11 numbers">
                             </div>
 
-                            <button type="submit" class="btn btn-primary btn-block"><a href="login.html"
+                            <div class="form-group">
+                                <label for="Types">Type Of Teacher:</label>
+                                <input type="text" class="form-control" id="Tot" name="type" placeholder="learner | master | Step By Step Up" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block"><a href="teacher_login.html"
                                     style="color: white;">register</a></button>
                         </form>
                     </div>
                     <div class="card-footer">
                         <p class="text-center">Already have an account?</p>
-                        <p class="text-center"> <a href="login.html">Login here.</a>
+                        <p class="text-center"> <a href="teacher_login.html">Login here.</a>
                         <p>
                     </div>
                 </div>

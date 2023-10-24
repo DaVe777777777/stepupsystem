@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TEACHER | PROFILE</title>
+    <link rel="icon" href="logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
@@ -440,6 +441,35 @@
         .button-delete:hover {
             background-color: #e74c3c;
         }
+
+
+#searchBar {
+    width: 30%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    
+}
+
+#searchBar::placeholder {
+        color: white;
+    }
+
+#searchButton {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px; /* Adjust this margin as needed */
+}
+
+
+
     </style>
 </head>
 
@@ -447,7 +477,7 @@
 
     <section class="header">
         <nav>
-            <a href="index.html"><img src="stepup.png" /></a>
+            <a href="teacher.html"><img src="stepup.png" /></a>
             <div class="nav-links" id="navLinks">
                 <i class="bi bi-x-lg" onclick="hideMenu()"></i>
                 <ul>
@@ -496,41 +526,45 @@
                     09127419728
                 </p>
 
+                <p>
+                    <strong>Teacher Type:</strong>
+                    Learner
+                </p>
+
                 <br>
-                <a class="update-button" href="update_profile.html">UPDATE PROFILE</a>
+                <a class="update-button" href="teacher_update_profile.html">UPDATE PROFILE</a>
             </div>
         </div>
     </section>
 
 
     <section class="req-cla-sch">
+    
         <table class="table table-bordered">
-            <h1 class="ticket_title">REQUEST CLASS SCHEDULE</h1>
+            <h1 class="ticket_title">CLASS LIST</h1>
+            <input type="text" id="searchBar" placeholder="Search...">
+            <button id="searchButton">Search</button>
+            <button id="cancelButton">Cancel</button>
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <th scope="row">John Dave De Leon</th>
+                <td>John@gmail.com</td>
+                <td>31/10/2023</td>
+                <td>07:30 am</td>
               </tr>
               <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
+                <th scope="row">Dave John De Leon</th>
+                <td>Dave@gmail.com</td>
+                <td>31/10/2023</td>
+                <td>07:30 am</td>
               </tr>
             </tbody>
           </table>
@@ -544,17 +578,45 @@
             padding-right: 50px;
         }
 
+        #searchButton {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#cancelButton{
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#searchButton:hover {
+    background-color: lightblue;
+}
+
+#cancelButton:hover {
+    background-color: lightcoral;
+}
+
     </style>
     
 
     <section>
         <div class="facocon">
             <div class="facorow">
-                <div class="facofa" onclick="window.location.href = 'faq.html';">
-                    <a href="faq.html">FAQ</a>
+                <div class="facofa" onclick="window.location.href = 'teacher_faq.html';">
+                    <a href="teacher_faq.html">FAQ</a>
                 </div>
-                <div class="facoco" onclick="window.location.href = 'contact.html';">
-                    <a href="contact.html">Contact Us</a>
+                <div class="facoco" onclick="window.location.href = 'teacher_contact.html';">
+                    <a href="teacher_contact.html">Contact Us</a>
                 </div>
             </div>
         </div>
@@ -565,17 +627,17 @@
             <div class="menu">
                 <h2>Classes</h2>
                 <ul>
-                    <li><a href="instructor.html">Instructor</a></li>
-                    <li><a href="class.html">Class</a></li>
-                    <li><a href="ticket.html">Tickets</a></li>
+                    <li><a href="teacher_instructor.html">Instructor</a></li>
+                    <li><a href="teacher_class.html">Class</a></li>
+                    
                 </ul>
             </div>
             <div class="menu">
                 <h2>Infos</h2>
                 <ul>
-                    <li><a href="about_us.html">About Us</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="teacher_about_us.html">About Us</a></li>
+                    <li><a href="teacher_faq.html">FAQ</a></li>
+                    <li><a href="teacher_contact.html">Contact Us</a></li>
                 </ul>
             </div>
             <div class="footer-body">
@@ -606,6 +668,25 @@
             navLinks.style.right = "-200px";
         }
     </script>
+
+<script>
+    var searchForm = document.getElementById("searchForm");
+  
+    document.getElementById("searchButton").addEventListener("click", function (event) {
+      // Prevent the form from submitting
+      event.preventDefault();
+  
+      // Your search logic here (e.g., update the table content)
+    });
+  
+    document.getElementById("cancelButton").addEventListener("click", function (event) {
+      // Prevent the form from submitting
+      event.preventDefault();
+  
+      // Your cancel logic here (e.g., clear the search input)
+    });
+  </script>
+  
 </body>
 
 </html>
