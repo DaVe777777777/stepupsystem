@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ENROLLED STUDENT | ADMIN</title>
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: darkviolet;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        #welcome {
+            font-size: 28vh;
+            color: #fff;
+            font-weight: bolder;
+            text-align: center;
+            padding: 50px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        #sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background-color: darkviolet;
+            transition: 0.3s;
+            border-right: 2px solid white;
+            z-index: 2;
+        }
+
+        #logo {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        #logo a {
+            display: inline-block;
+            max-width: 80%;
+        }
+
+        #logo img {
+            width: 100%;
+        }
+
+        #sidebar a {
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+            color: #fff;
+            display: block;
+            font-weight: bolder;
+        }
+
+        #sidebar li:hover {
+            background-color: lightblue;
+        }
+
+        #menu-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            font-size: 30px;
+            color: white;
+        }
+
+        #menu-close {
+            position: absolute;
+            top: 20px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 50px;
+            color: #fff;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-bottom: 10px;
+        }
+
+        #logout {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            display: inline-block;
+            color: #fff;
+            padding: 8px 16px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            background-color: #c0392b;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        #logout:hover {
+            background-color: #e74c3c;
+        }
+
+        /* Responsive Table CSS */
+        .table-container {
+            overflow-x: auto;
+            padding: 50px;
+        }
+
+        .responsive-table {
+            width: 100%;
+            border-collapse: collapse;
+
+        }
+
+        .responsive-table th,
+        .responsive-table td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+            color: white;
+            text-align: center;
+
+        }
+
+        .responsive-table th {
+            background-color: darkviolet;
+            color: white;
+        }
+
+        button {
+            padding: 8px 16px;
+            margin: 4px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button.update {
+            background-color: #e9e50d;
+            /* Change the color as desired */
+            color: white;
+        }
+
+        button.delete {
+            background-color: #c0392b;
+            /* Change the color as desired */
+            color: white;
+        }
+
+        button.update:hover,
+        button.delete:hover {
+            filter: brightness(90%);
+        }
+
+        .status-dropdown {
+            padding: 6px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: white;
+            width: 100%;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .status-dropdown:focus {
+            outline: none;
+            border-color: darkviolet;
+        }
+
+        .responsive-table td select {
+            width: calc(100% - 26px);
+        }
+
+        #searchBar {
+    width: 30%;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    margin-bottom: 20px;
+    
+}
+
+#searchBar::placeholder {
+        color: white;
+    }
+
+#searchButton {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px; /* Adjust this margin as needed */
+}
+
+#cancelButton{
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#searchButton:hover {
+    background-color: lightblue;
+}
+
+#cancelButton:hover {
+    background-color: lightcoral;
+}
+
+
+
+
+
+        .footer-bottom {
+            text-align: center;
+            background-color: darkviolet;
+            padding: 2px;
+            color: white;
+            border-top: 2px solid white;
+            margin: 0;
+            position: relative;
+            top: 135px;
+            left: 0;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            #welcome {
+                font-size: 10vh;
+                /* Adjust font size for smaller screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="header">
+        <nav>
+            <div id="menu-toggle" onclick="toggleSidebar()">&#9776;</div>
+            <div id="sidebar">
+                <div id="logo">
+                    <a href="admin.html"><img src="stepup.png" alt="Logo"></a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="admin_schedule.html">SCHEDULE</a></li>
+                    <li><a href="admin_instructor.html">INSTRUCTORS</a></li>
+                    <li><a href="admin_student.html">STUDENTS</a></li>
+                    <li><a href="admin_enstudent.html">ENROLLED STUDENTS</a></li>
+                    <li><a href="admin_request_ticket.html">REQUEST TICKETS</a></li>
+                </ul>
+                <div id="menu-close" onclick="toggleSidebar()">&times;</div>
+            </div>
+            <div id="logout" onclick="logout()"><i class="fa-solid fa-right-from-bracket" style="color: white;"></i>
+            </div>
+        </nav>
+    </section>
+
+    <section>
+        <div id="welcome">ENROLLED STUDENTS</div>
+    </section>
+
+    <div class="table-container">
+        <table class="responsive-table">
+            <table class="responsive-table">
+                <input type="text" id="searchBar" placeholder="Search...">
+                <button id="searchButton">Search</button>
+                <button id="cancelButton">Cancel</button>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Type Of Class</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Sample data, replace this with actual data from your source -->
+                <tr>
+                    <td>John Dave De Leon</td>
+                    <td>dave@gmail.com</td>
+                    <td>Learner</td>
+                    <td>31/10/2023</td>
+                    <td>07:30 am</td>
+                    <td>
+                        <select class="status-dropdown">
+                            <option value="pending" selected>Pending</option>
+                            <option value="accepted">Accepted</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="update" onclick="updateInstructor()">Update</button>
+                        <button class="delete" onclick="deleteInstructor()">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Yvan Kalalo</td>
+                    <td>yvan@gmail.com</td>
+                    <td>Master</td>
+                    <td>31/10/2023</td>
+                    <td>02:30 pm</td>
+                    <td>
+                        <select class="status-dropdown">
+                            <option value="pending" selected>Pending</option>
+                            <option value="accepted">Accepted</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="update" onclick="updateInstructor()">Update</button>
+                        <button class="delete" onclick="deleteInstructor()">Delete</button>
+                    </td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+    </section>
+
+
+
+    <section>
+        <div class="footer-bottom">
+            <h3>&copy; 2023 STEP UP. All Rights Reserved.</h3>
+        </div>
+    </section>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const menuToggle = document.getElementById('menu-toggle');
+
+            if (sidebar.style.left === '-250px' || sidebar.style.left === '') {
+                sidebar.style.left = '0';
+                menuToggle.style.display = 'none';
+            } else {
+                sidebar.style.left = '-250px';
+                menuToggle.style.display = 'block';
+            }
+        }
+
+        function logout() {
+            window.location.href = 'admin_login.html';
+        }
+    </script>
+</body>
+
+</html>

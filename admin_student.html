@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin Home Page</title>
+    <title>STUDENT | ADMIN</title>
     <link rel="icon" href="logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
 
     <style>
         body {
@@ -14,15 +16,16 @@
             background-color: darkviolet;
             margin: 0;
             padding: 0;
-           
+
         }
 
         #welcome {
-            font-size: 15vh;
+            font-size: 30vh;
             color: #fff;
             font-weight: bolder;
             text-align: center;
-           padding: 50px;
+            padding: 50px;
+           
         }
 
         nav {
@@ -119,54 +122,62 @@
             background-color: #e74c3c;
         }
 
-        .status {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            margin: 5vh;
+        /* Responsive Table CSS */
+        .table-container {
+            overflow-x: auto;
+            padding: 50px;
         }
 
-        .box {
-            color: #fff;
-            padding: 20px;
-            margin: 10px;
-            border-radius: 5px;
-            width: 30%;
+        .responsive-table {
+            width: 100%;
+            border-collapse: collapse;
+
+        }
+
+        .responsive-table th,
+        .responsive-table td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+            color: white;
             text-align: center;
-            box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.8);
-            font-size: 30px;
+
         }
 
-        .box-title {
-            padding-top: 20px;
-            font-size: 30px;
-            margin-bottom: 10px;
-            font-weight: bolder;
+        .responsive-table th {
+            background-color: darkviolet;
+            color: white;
         }
 
-        .box-paragraph {
-            font-size: 30px;
+        button {
+            padding: 8px 16px;
+            margin: 4px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease-in-out;
         }
 
-        .box:nth-child(1) {
-            background-color: #3498db;
+        button.update {
+            background-color: #e9e50d;
+            /* Change the color as desired */
+            color: white;
         }
 
-        .box:nth-child(2) {
-            background-color: #e74c3c;
+        button.delete {
+            background-color: #c0392b;
+            /* Change the color as desired */
+            color: white;
         }
 
-        .box:nth-child(3) {
-            background-color: #27ae60;
+        button.update:hover,
+        button.delete:hover {
+            filter: brightness(90%);
         }
-        .box:nth-child(4) {
-            background-color: #d9ec10;
-        }
-        
 
-        .box i {
-            font-size: 40px;
-        }
+
+
 
         .footer-bottom {
             text-align: center;
@@ -181,29 +192,53 @@
             z-index: 1;
         }
 
-        /* Media query for responsiveness */
+        #searchBar {
+    width: 30%;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    margin-bottom: 20px;
+    
+}
+
+#searchBar::placeholder {
+        color: white;
+    }
+
+#searchButton {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px; /* Adjust this margin as needed */
+}
+
+#cancelButton{
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#searchButton:hover {
+    background-color: lightblue;
+}
+
+#cancelButton:hover {
+    background-color: lightcoral;
+}
+
         @media (max-width: 768px) {
-            .status {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .box {
-                width: 70%;
-                margin: 10px 0;
-                font-size: 20px; /* Adjust font size for smaller screens */
-            }
-
-            .box-title {
-                font-size: 20px; /* Adjust title font size for smaller screens */
-            }
-
-            .box-paragraph {
-                font-size: 20px; /* Adjust paragraph font size for smaller screens */
-            }
-
             #welcome {
-                font-size: 10vh; /* Adjust font size for smaller screens */
+                font-size: 10vh;
+                /* Adjust font size for smaller screens */
             }
         }
     </style>
@@ -226,38 +261,64 @@
                 </ul>
                 <div id="menu-close" onclick="toggleSidebar()">&times;</div>
             </div>
-            <div id="logout" onclick="logout()"><i class="fa-solid fa-right-from-bracket" style="color: white;"></i></div>
+            <div id="logout" onclick="logout()"><i class="fa-solid fa-right-from-bracket" style="color: white;"></i>
+            </div>
         </nav>
     </section>
 
     <section>
-        <div id="welcome">WELCOME ADMIN</div>
+        <div id="welcome">STUDENTS</div>
     </section>
 
-    <section>
-        <div class="status">
-            <div class="box">
-                <i class="fa-solid fa-user-group"></i>
-                <div class="box-title">INSTRUCTORS</div>
-                <div class="box-paragraph">(30)</div>
-            </div>
-            <div class="box">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <div class="box-title">STUDENTS</div>
-                <div class="box-paragraph">(25)</div>
-            </div>
-            <div class="box">
-                <i class="fa-solid fa-user-plus"></i>
-                <div class="box-title">ENROLLED STUDENTS</div>
-                <div class="box-paragraph">(10)</div>
-            </div>
-            <div class="box">
-                <i class="fa-solid fa-ticket"></i>
-                <div class="box-title">REQUEST TICKETS</div>
-                <div class="box-paragraph">(2)</div>
-            </div>
-        </div>
+    <div class="table-container">
+        <table class="responsive-table">
+            <input type="text" id="searchBar" placeholder="Search...">
+            <button id="searchButton">Search</button>
+            <button id="cancelButton">Cancel</button>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>Mobile Number</th>
+                    <th>Ticket Available</th>
+                    <th>Picture</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Sample data, replace this with actual data from your source -->
+                <tr>
+                    <td>John Dave De Leon</td>
+                    <td>Example Address</td>
+                    <td>dave@gmail.com</td>
+                    <td>096-456-9990</td>
+                    <td>21</td>
+                    <td><img src="girl.jpg" alt="Teacher"></td>
+                    <td>
+                        <button class="update" onclick="updateInstructor()">Update</button>
+                        <button class="delete" onclick="deleteInstructor()">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Yvan Kalalo</td>
+                    <td>Example Address</td>
+                    <td>yvan@gmail.com</td>
+                    <td>987-333-3244</td>
+                    <td>18</td>
+                    <td><img src="girl.jpg" alt="Teacher"></td>
+                    <td>
+                        <button class="update" onclick="updateInstructor()">Update</button>
+                        <button class="delete" onclick="deleteInstructor()">Delete</button>
+                    </td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
     </section>
+
+
 
     <section>
         <div class="footer-bottom">
@@ -284,4 +345,5 @@
         }
     </script>
 </body>
+
 </html>
